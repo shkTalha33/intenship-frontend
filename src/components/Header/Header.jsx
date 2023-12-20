@@ -2,22 +2,22 @@ import { Button, Input, message } from 'antd';
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import './_header.scss';
-import { useProductContext } from '../../context/productContext';
+import { useAuthContext } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
 
-  const {dispatch} = useProductContext()
+  const {dispatch,auth} = useAuthContext()
 
   const navigate = useNavigate()
 
   const handleLogout = () => {
     message.success("User logged out successfully")
-    navigate("/auth/signin")
+    localStorage.removeItem("auth-token")
+    // navigate("/auth/signin")
      dispatch({type:"SET_LOGGED_OUT"})
   }
  
-const {auth} = useProductContext()
 
   return (
     <>

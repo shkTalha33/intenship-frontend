@@ -2,11 +2,11 @@ import {  Button, Divider, Form, Input, message } from 'antd'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useProductContext } from '../../../context/productContext'
+import { useAuthContext } from '../../../context/authContext'
 
 export default function SignIn() {
 
-const {dispatch}  = useProductContext()
+const {dispatch}  = useAuthContext()
   const naviagte = useNavigate()
   const host = "http://localhost:8000"
   const [loading, setLoading] = useState(false)

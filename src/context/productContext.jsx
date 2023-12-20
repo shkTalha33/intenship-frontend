@@ -1,67 +1,48 @@
-import { message } from 'antd';
-import axios from 'axios';
-import React, { createContext, useContext, useEffect, useReducer } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useReducer, useContext, createContext } from "react";
 
-const productContext = createContext()
+const productContext = createContext();
 
 export default function ProductContextProvider(props) {
+  const initailState = {
+    all_products: [],
+    loading: true,
+  };
 
-const navigate = useNavigate()
-
-    const initailState = {
-        auth:false,
-        user:{}
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "ALL_PRODUCTS":
+        return { ...state, all_products: action.payload, loading: false }; 
+      default:
+      return  state;
     }
+  };
 
- 
-    
+  const [state, dispatch] = useReducer(reducer, initailState);
 
-    const reducer = (state,action) => {
-         switch (action.type) {
-            case "SET_USER":
-                return {...state,auth:true, user:action.payload}
-           case "SET_LOGGED_IN": 
-                return {...state,auth:true}
-           case "SET_LOGGED_OUT": 
-                return {...state,auth:false,user:{}}
-            default:
-                state;
-         }
-    }
+  const fetchProducts = async () => {
+    axios
+      .get("http://localhost:8000/products/getproducts")
+      .then((res) => {
+        const products = res.data.message;
+        dispatch({ type: "ALL_PRODUCTS", payload: products });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
-
-    const [state, dispatch] = useReducer(reducer,initailState)
-
-
-    useEffect(() => {
-        const token = localStorage.getItem("auth-token")
-         if (token) {
-            const headers={
-                'auth-token':token
-            }
-           axios.get("http://localhost:8000/auth/getuser",{headers})
-           .then((res)=>{
-            const user =  res.data.message[0]
-               dispatch({type:"SET_USER",payload:user})
-          })
-         .catch (error=> {
-          console.error(error);
-            // message.error("Something went wrong while login")
-        })
-         }else{
-            navigate("/auth/signin")
-            message.error("Invalid Credentails Plz Login First!")
-         }
-      
-    }, [])
-    
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
-     <productContext.Provider value={{...state,dispatch}}>
+    <>
+      <productContext.Provider value={{ ...state, dispatch }}>
         {props.children}
-     </productContext.Provider>
-  )
+      </productContext.Provider>
+    </>
+  );
 }
 
- export const useProductContext = () => useContext(productContext)
+export const useProductContext = () => useContext(productContext);

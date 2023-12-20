@@ -1,8 +1,8 @@
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useProductContext } from '../../../context/productContext'
+import { useAuthContext } from '../../../context/authContext'
 
 export default function ProductPage() {
 
@@ -10,7 +10,7 @@ export default function ProductPage() {
     const params = useParams()
     const productId = params.id
 
-    const {auth} = useProductContext()
+    const {auth} = useAuthContext()
  
     useEffect(() => {
 const headers = {
@@ -38,7 +38,7 @@ const headers = {
            </div>
            <div className="detail-section px-3 md:px-0 md:w-[46%]">
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>
-              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong>Rs {singleProduct.productPrice}$</p>
+              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong> {singleProduct.productPrice}$</p>
               {singleProduct.productSizes && (
               <p className=' text-xl md:text-3xl my-5 md:my-10 px-2 inline bg-[#88c8bc]'>
               <strong>Sizes : </strong>
@@ -51,7 +51,7 @@ const headers = {
 
               <p className='text-xl md:text-3xl my-5 md:my-10 '><strong>Condition : </strong>{singleProduct.productCondition}</p>
               
-              <Button type='submit' className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' disabled={!auth ?   true  : false}>Add To Cart</Button>
+              <Button type='submit' className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' disabled={!auth ?   true  : false} onClick={()=>{auth ? message.success("Product Add To Cart") : message.error("Please Login First")}}>Add To Cart</Button>
            </div>
        </div>
     </>
