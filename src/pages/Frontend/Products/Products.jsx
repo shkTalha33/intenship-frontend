@@ -87,7 +87,7 @@ export default function Product() {
               </div>
             </div>
           </div>
-          <CategoryAPI selectedCategory={category} products={filter_products} />
+          <CategoryAPI selectedCategory={category}  />
         </>
       )}
     </>

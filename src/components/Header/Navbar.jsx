@@ -31,15 +31,11 @@ export default function Navbar() {
               <li  className="cursor-pointer  lg:text-xl  md:text-base py-6 right-0 text-white hover:text-[#88c8bc]">
                 <Link to="/">Home</Link>
               </li>
-              <li  className="cursor-pointer  lg:text-xl  md:text-base py-6 right-0 text-white hover:text-[#88c8bc]">
-                <Link to="/about">About</Link>
-              </li>
+              
               <li  className="cursor-pointer  lg:text-xl  md:text-base py-6 right-0 text-white hover:text-[#88c8bc]">
                 <Link to="/products">Products</Link>
               </li>
-              <li  className="cursor-pointer  lg:text-xl  md:text-base py-6 right-0 text-white hover:text-[#88c8bc]">
-                <Link to="/contact">Contact</Link>
-              </li>
+            
            
         </ul>
       </div>
