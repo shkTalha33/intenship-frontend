@@ -22,5 +22,5 @@ export default function CategoryAPI({selectedCategory}) {
 
         categoryFilteration()
 
-    }, [selectedCategory])
+    }, [selectedCategory.length])
 }

@@ -1,9 +1,12 @@
 import React from 'react'
 import { Button } from 'antd'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom';
 
 export default function HeroText({ bg, text1, text2, text3 }) {
 
+    const navigate =  useNavigate()
+   
   const curoselVarrient = {
     hidden: { y: 100, opacity: 0 },
     view: {
@@ -31,7 +34,7 @@ export default function HeroText({ bg, text1, text2, text3 }) {
         <motion.p className="text-2xl font-thin text-gray-400" variants={curoselVarrient} initial="hidden" whileInView="view">
           New trending shoes
         </motion.p>
-        <Button type="submit"  className="text-sm bg-gray-500 text-white border-0 m-3 h-10 rounded-lg hover:text-white hover:bg-slate-600 transition-all ease-in duration-200">
+        <Button type="submit" onClick={()=>navigate("/products")}  className="text-sm bg-gray-500 text-white border-0 m-3 h-10 rounded-lg hover:text-white hover:bg-slate-600 transition-all ease-in duration-200">
           Shop Collection
         </Button>
       </motion.div>
