@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false)
-  const host = "http://localhost:8000"
+  const host = "https://intenship-deploy.vercel.app/"
   const navigate =  useNavigate()
   const handleFinish = (values) => {
     const { cpassword, ...dataToSend } = values;

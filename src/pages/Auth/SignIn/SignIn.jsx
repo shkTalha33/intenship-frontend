@@ -8,7 +8,7 @@ export default function SignIn() {
 
 const {dispatch}  = useAuthContext()
   const naviagte = useNavigate()
-  const host = "http://localhost:8000"
+  const host = "https://intenship-deploy.vercel.app/"
   const [loading, setLoading] = useState(false)
   const handleFinish = (values) => {
     
