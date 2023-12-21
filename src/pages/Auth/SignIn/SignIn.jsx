@@ -8,7 +8,6 @@ export default function SignIn() {
 
 const {dispatch}  = useAuthContext()
   const naviagte = useNavigate()
-  const host = "https://intenship-deploy.vercel.app/"
   const [loading, setLoading] = useState(false)
   const handleFinish = (values) => {
     
@@ -16,7 +15,7 @@ const {dispatch}  = useAuthContext()
       'Content-Type': 'application/json'
    }
         setLoading(true)
-        axios.post(`${host}auth/signin`,values,{headers})
+        axios.post(`https://intenship-deploy.vercel.app/auth/signin`,values,{headers})
         .then((res)=>{
           const token = res.data.message
           naviagte("/")

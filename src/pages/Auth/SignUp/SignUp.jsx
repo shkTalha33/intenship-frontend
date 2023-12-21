@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false)
-  const host = "https://intenship-deploy.vercel.app/"
+  // const host = "https://intenship-deploy.vercel.app/"
   const navigate =  useNavigate()
   const handleFinish = (values) => {
     const { cpassword, ...dataToSend } = values;
@@ -13,7 +13,7 @@ export default function SignUp() {
       'ContentType' : 'application/json'
     }
     setLoading(true)
-    axios.post(`${host}auth/signup`,dataToSend,{headers})
+    axios.post(`https://intenship-deploy.vercel.app/auth/signup`,dataToSend,{headers})
     .then(res=>{
       const token = res.data.message
        localStorage.setItem("auth-token",token)
