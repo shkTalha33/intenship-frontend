@@ -3,24 +3,26 @@ import  { useEffect } from 'react'
 import { useFilterContext } from '../context/FilterContext';
 
 export default function CategoryAPI({selectedCategory}) {
-    const host = "http://localhost:8000/items"
+
   const { dispatch } = useFilterContext();
 
     
-    useEffect(() => {
+  useEffect(() => {
+     if (selectedCategory) {
+      const categoryFilteration = () => {
+        axios.get(`https://intenship-deploy.vercel.app/items/${selectedCategory}`)
+        .then(res=>{
+          const category = res.data.message
+          dispatch({type:"FILTER_ON_CATEGORIES",payload:{category}})
+        })
+        .catch(err=>{
+          console.error(err);
+        })
+    }
+    categoryFilteration()
+     }
+      
 
-        const categoryFilteration = () => {
-            axios.get(`${host}/${selectedCategory}`)
-            .then(res=>{
-              const category = res.data.message
-              dispatch({type:"FILTER_ON_CATEGORIES",payload:{category}})
-            })
-            .catch(err=>{
-              console.error(err);
-            })
-        }
 
-        categoryFilteration()
-
-    }, [selectedCategory.length])
+    }, [selectedCategory])
 }

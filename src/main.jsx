@@ -9,7 +9,7 @@ import FilterContextProvider from "./context/FilterContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename='/'>
+    <BrowserRouter >
      <AuthContextProvider>
       <ProductContextProvider>
         <FilterContextProvider>

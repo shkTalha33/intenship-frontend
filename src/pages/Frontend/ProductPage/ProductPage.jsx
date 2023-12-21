@@ -17,7 +17,7 @@ const headers = {
      'Content-Type':'application/json'
 }
 
-      axios.get(`http://localhost:8000/products/getsingleproduct/${productId}`,{headers})
+      axios.get(`https://intenship-deploy.vercel.app/products/getsingleproduct/${productId}`,{headers})
       .then(res=>{
         const responce = res.data.message[0]
         setSingleProduct(responce)
@@ -32,9 +32,10 @@ const headers = {
     
   return (
     <>
+     
        <div className="single-page md:w-4/6 md:flex justify-between    mx-auto md:py-20 py-10">
            <div className="img-section md:w-[46%]">
-            <img src={singleProduct.img_url} alt={singleProduct.productTitle} />
+            <img  src={singleProduct.img_url} alt={singleProduct.productTitle} />
            </div>
            <div className="detail-section px-3 md:px-0 md:w-[46%]">
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>

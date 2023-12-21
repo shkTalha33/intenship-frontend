@@ -15,7 +15,7 @@ export default function ProductSizes() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/items/size?sizes=${selectedSizes}`)
+      .get(`https://intenship-deploy.vercel.app/items/size?sizes=${selectedSizes}`)
       .then((res) => {
         const sizes = res.data.message;
         console.log(sizes)
@@ -28,7 +28,7 @@ export default function ProductSizes() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/items/allsizes")
+      .get("https://intenship-deploy.vercel.app/items/allsizes")
       .then((res) => {
         setSizes(res.data.message);
       })

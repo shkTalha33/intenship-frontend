@@ -11,16 +11,17 @@ import CategoryAPI from '../../../components/CategoryAPI'
 export default function Product() {
   const { filter_products, loading, dispatch } = useFilterContext();
   const [searchterm, setSearchterm] = useState("");
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState('olddate');
 
   const handleCategory = (value) => {
      setCategory(value);
   };
 
   useEffect(() => {
-    const searchProducts = () => {
+    if (setCategory !== "" || null) {
+      const searchProducts = () => {
         axios
-          .get(`http://localhost:8000/items/searchbar?term=${searchterm}`)
+          .get(`https://intenship-deploy.vercel.app/items/searchbar?term=${searchterm}`)
           .then((res) => {
             const searchBar = res.data.message;
             dispatch({ type: 'FILTER_ON_SEARCH', payload: { searchBar } });
@@ -31,6 +32,7 @@ export default function Product() {
     };
 
     searchProducts();
+    }
   }, [searchterm]);
 
   return (
@@ -87,6 +89,7 @@ export default function Product() {
               </div>
             </div>
           </div>
+          {console.log(category)}
           <CategoryAPI selectedCategory={category}  />
         </>
       )}
