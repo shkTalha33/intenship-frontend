@@ -16,7 +16,7 @@ const {dispatch}  = useAuthContext()
       'Content-Type': 'application/json'
    }
         setLoading(true)
-        axios.post(`${host}/auth/signin`,values,{headers})
+        axios.post(`${host}auth/signin`,values,{headers})
         .then((res)=>{
           const token = res.data.message
           naviagte("/")
