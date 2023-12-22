@@ -34,10 +34,10 @@ const headers = {
     <>
      
        <div className="single-page md:w-4/6 md:flex justify-between    mx-auto md:py-20 py-10">
-           <div className="img-section md:w-[46%]">
+           <div className="img-section mx-auto w-[60%]  md:w-[46%]">
             <img  src={singleProduct.img_url} alt={singleProduct.productTitle} />
            </div>
-           <div className="detail-section px-3 md:px-0 md:w-[46%]">
+           <div className="detail-section px-3 md:px-0 mx-auto md:w-[46%]">
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>
               <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong> {singleProduct.productPrice}$</p>
               {singleProduct.productSizes && (
