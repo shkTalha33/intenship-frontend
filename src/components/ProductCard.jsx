@@ -9,7 +9,7 @@ export default function ProductCard({products}) {
     <>
      {products.map((product,i)=>{
         return (
-        <Card hoverable={true} key={i} onClick={()=>{navigate(`/productpage/${product._id}`)}} className='w-full border  md:w-1/4 md:mx-2 mb-4  cursor-pointer hover:border-0  '>
+        <Card hoverable={true} key={i} onClick={()=>{navigate(`/productpage/${product._id}`)}} className=' border mx-auto mt-5 w-[70%] md:mt-0 sm:w-[45%] lg:w-[30%] md:mx-2 mb-4  cursor-pointer hover:border-0  '>
             <img src={product.img_url} alt={product.productTitle} className='h-[50%] hover:h-[60%]  p-2 hover:p-0 transition-all ease-in duration-200' />
           <div className="detail px-5 my-8">
           <p className='text-lg'>{product.productTitle}</p>

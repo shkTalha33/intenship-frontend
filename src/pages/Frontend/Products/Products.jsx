@@ -13,6 +13,7 @@ export default function Product() {
   const [searchterm, setSearchterm] = useState("");
   const [category, setCategory] = useState('olddate');
 
+
   const handleCategory = (value) => {
      setCategory(value);
   };
@@ -78,7 +79,7 @@ export default function Product() {
               </div>
             </div>
             <div className="all-products md:w-[70%] lg:w-4/5">
-              <div className="sizes-box flex-wrap md:flex items-center justify-evenly">
+              <div className="sizes-box sm:flex justify-around items-center flex-wrap ">
                 {filter_products.length < 1 ? (
                   <div className="no-product text-center text-4xl">
                     No Products To Show
@@ -89,8 +90,7 @@ export default function Product() {
               </div>
             </div>
           </div>
-          {console.log(category)}
-          <CategoryAPI selectedCategory={category}  />
+          <CategoryAPI selectedCategory={category} products={filter_products}  />
         </>
       )}
     </>
