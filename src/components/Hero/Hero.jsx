@@ -14,7 +14,7 @@ import bg3 from "../../assets/images/img_bg_3.jpg"
 export default function Hero() {
   return (
     <>
-       <div className={`hero`} >
+       <div className="hero  overflow-hidden "  >
        <Swiper
         slidesPerView={1}
         spaceBetween={30}

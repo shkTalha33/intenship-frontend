@@ -13,7 +13,7 @@ export default function SignUp() {
       'ContentType' : 'application/json'
     }
     setLoading(true)
-    axios.post(`https://intenship-deploy.vercel.app/auth/signup`,dataToSend,{headers})
+    axios.post(`http://localhost:8000/auth/signup`,dataToSend,{headers})
     .then(res=>{
       const token = res.data.message
        localStorage.setItem("auth-token",token)

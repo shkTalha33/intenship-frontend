@@ -13,6 +13,7 @@ export default function Product() {
   const [searchterm, setSearchterm] = useState("");
   const [category, setCategory] = useState('olddate');
 
+  console.log(filter_products)
 
   const handleCategory = (value) => {
      setCategory(value);
@@ -38,11 +39,11 @@ export default function Product() {
 
   return (
     <>
-      {!filter_products ? (
-        <Spin spinning={loading} className='h-full w-full flex items-centerjustify-center' size="large" />
-      ) : (
-        <>
-          <div className="upper-side md:flex justify-between items-center w-5/6 mx-auto py-10 md:py-20">
+      {/* {!filter_products.length ? (
+        <Spin spinning={loading} className='h-[100vh] w-full flex items-center justify-center' size="large" />
+       ) : ( */}
+        <div className='min-h-[100vh]'>
+          <div className="upper-side  md:flex justify-between items-center w-5/6 mx-auto py-10 md:py-20">
             <div className="search-section my-7 md:my-0 md:w-1/5">
               <Input.Search
                 value={searchterm}
@@ -80,9 +81,9 @@ export default function Product() {
             </div>
             <div className="all-products md:w-[70%] lg:w-4/5">
               <div className="sizes-box sm:flex justify-around items-center flex-wrap ">
-                {filter_products.length < 1 ? (
+                {!filter_products.length  ? (
                   <div className="no-product text-center text-4xl">
-                    No Products To Show
+                      <h1>No Products To Show</h1>
                   </div>
                 ) : (
                   <ProductCard products={filter_products} />
@@ -90,9 +91,9 @@ export default function Product() {
               </div>
             </div>
           </div>
-          <CategoryAPI selectedCategory={category} products={filter_products}  />
-        </>
-      )}
+          {filter_products && <CategoryAPI selectedCategory={category} products={filter_products}  />}
+        </div>
+      {/* )} */}
     </>
   );
 }

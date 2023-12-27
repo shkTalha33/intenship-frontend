@@ -15,10 +15,9 @@ export default function ProductSizes() {
 
   useEffect(() => {
     axios
-      .get(`https://intenship-deploy.vercel.app/items/size?sizes=${selectedSizes}`)
+      .get(`http://localhost:8000/items/size?sizes=${selectedSizes}`)
       .then((res) => {
         const sizes = res.data.message;
-        console.log(sizes)
         dispatch({ type: "FILTRATION_ON_SIZES", payload: { sizes } });
       })
       .catch((err) => {
@@ -28,7 +27,7 @@ export default function ProductSizes() {
 
   useEffect(() => {
     axios
-      .get("https://intenship-deploy.vercel.app/items/allsizes")
+      .get("http://localhost:8000/items/allsizes")
       .then((res) => {
         setSizes(res.data.message);
       })

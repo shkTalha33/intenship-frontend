@@ -1,23 +1,37 @@
-import { Button, Input, message } from 'antd';
-import React from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import './_header.scss';
-import { useAuthContext } from '../../context/authContext';
-import { useNavigate } from 'react-router-dom';
+import { Button, Input, message, Badge } from "antd";
+import React from "react";
+import { SearchOutlined } from "@ant-design/icons";
+import "./_header.scss";
+import { useAuthContext } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import { LuShoppingCart } from "react-icons/lu";
+import { useCartContext } from "../../context/cartContext";
 
 export default function Header() {
+  const { dispatch, auth } = useAuthContext();
+  const {cart} = useCartContext()
 
-  const {dispatch,auth} = useAuthContext()
+  
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+ 
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    console.log(auth)
+     if (auth) {
+      navigate("/cart")
+     }else{
+       message.error("Please Login First")
+     }
+  }
 
   const handleLogout = () => {
-    message.success("User logged out successfully")
-    localStorage.removeItem("auth-token")
+    message.success("User logged out successfully");
+    localStorage.removeItem("auth-token");
     // navigate("/auth/signin")
-     dispatch({type:"SET_LOGGED_OUT"})
-  }
- 
+    dispatch({ type: "SET_LOGGED_OUT" });
+  };
 
   return (
     <>
@@ -30,19 +44,39 @@ export default function Header() {
             <Input.Search
               placeholder="Search..."
               // onSearch={handleSearch}
-              enterButton={<SearchOutlined className="flex justify-center items-center " />}
+              enterButton={
+                <SearchOutlined className="flex justify-center items-center " />
+              }
               className="md:w-full  "
             />
-           
           </div>
-          <div className="auth-section mt-5 md:mt-0 ml-3 md:ml-0">
-            {!auth
-            ?
-            <Button type='submit' className='bg-sky-600 text-white lg:px-7  lg:py-5 md:p-5 flex justify-center items-center hover:text-white hover:bg-sky-500 rounded-lg ' onClick={()=>{navigate("/auth/signin")}}>Login</Button>
-            :
-            <Button type='submit' className='bg-amber-700 text-white lg:px-7   lg:py-5 md:p-5 flex justify-center items-center hover:text-white hover:bg-amber-800 rounded-lg ' onClick={handleLogout}>Logout</Button>
-           
-          }
+          <div className="right-nav-options mt-5 mx-4 md:mx-0  md:mt-0 flex items-center">
+            <div className="auth-section  ">
+              {!auth ? (
+                <Button
+                  type="submit"
+                  className="bg-sky-600 text-white lg:px-7  lg:py-5 md:p-5 flex justify-center items-center hover:text-white hover:bg-sky-500 rounded-lg "
+                  onClick={() => {
+                    navigate("/auth/signin");
+                  }}
+                >
+                  Login
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  className="bg-amber-700 text-white lg:px-7   lg:py-5 md:p-5 flex justify-center items-center hover:text-white hover:bg-amber-800 rounded-lg "
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              )}
+            </div>
+            <div className="cart-logo ml-auto md:ml-4 cursor-pointer" onClick={handleCart}>
+              <Badge count={totalItems} color="#faad14">
+                <LuShoppingCart className="text-2xl" />
+              </Badge>
+            </div>
           </div>
         </div>
       </header>

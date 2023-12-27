@@ -3,21 +3,32 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAuthContext } from '../../../context/authContext'
+import { useCartContext } from '../../../context/cartContext'
 
 export default function ProductPage() {
 
     const [singleProduct, setSingleProduct] = useState({})
     const params = useParams()
     const productId = params.id
+     const {dispatch} = useCartContext()
+     const {auth} = useAuthContext()
 
-    const {auth} = useAuthContext()
+    const handleAddToCart = (product) => {
+      if (auth) {
+        message.success("Product is Add To Cart")
+        dispatch({type:"ADD_TO_CART",payload:product})
+      }else{
+        message.error("Please Login First")
+      }
+    }
+
  
     useEffect(() => {
 const headers = {
      'Content-Type':'application/json'
 }
 
-      axios.get(`https://intenship-deploy.vercel.app/products/getsingleproduct/${productId}`,{headers})
+      axios.get(`http://localhost:8000/products/getsingleproduct/${productId}`,{headers})
       .then(res=>{
         const responce = res.data.message[0]
         setSingleProduct(responce)
@@ -52,7 +63,7 @@ const headers = {
 
               <p className='text-xl md:text-3xl my-5 md:my-10 '><strong>Condition : </strong>{singleProduct.productCondition}</p>
               
-              <Button type='submit' className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' disabled={!auth ?   true  : false} onClick={()=>{auth ? message.success("Product Add To Cart") : message.error("Please Login First")}}>Add To Cart</Button>
+              <Button type='submit'  className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' onClick={()=>handleAddToCart(singleProduct)}>Add To Cart</Button>
            </div>
        </div>
     </>

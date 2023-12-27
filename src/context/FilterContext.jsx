@@ -45,7 +45,8 @@ export default function FilterContextProvider(props) {
                 
                 return {
                     ...state,
-                    filter_products:action.payload.category
+                    filter_products:action.payload.category,
+                    apiLoading:action.loading
                 }
                
             default:

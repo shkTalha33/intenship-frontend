@@ -1,19 +1,25 @@
 import axios from 'axios'
-import  { useEffect } from 'react'
+import  { useEffect, useState } from 'react'
 import { useFilterContext } from '../context/FilterContext';
 
-export default function CategoryAPI({selectedCategory,products}) {
+export default function CategoryAPI({selectedCategory}) {
 
   const { dispatch } = useFilterContext();
+
+  const [apiLoading, setApiLoading] = useState(false)
 
     
   useEffect(() => {
      if (selectedCategory) {
+     
       const categoryFilteration = () => {
-        axios.get(`https://intenship-deploy.vercel.app/items/${selectedCategory}?filterSorting=${products}`)
+        setApiLoading(true)
+
+        axios.get(`http://localhost:8000/items/${selectedCategory}`)
         .then(res=>{
           const category = res.data.message
-          dispatch({type:"FILTER_ON_CATEGORIES",payload:{category}})
+          setApiLoading(false)
+          dispatch({type:"FILTER_ON_CATEGORIES",payload:{category},loading:apiLoading})
         })
         .catch(err=>{
           console.error(err);

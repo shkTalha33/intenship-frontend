@@ -15,7 +15,7 @@ const {dispatch}  = useAuthContext()
       'Content-Type': 'application/json'
    }
         setLoading(true)
-        axios.post(`https://intenship-deploy.vercel.app/auth/signin`,values,{headers})
+        axios.post(`http://localhost:8000/auth/signin`,values,{headers})
         .then((res)=>{
           const token = res.data.message
           naviagte("/")

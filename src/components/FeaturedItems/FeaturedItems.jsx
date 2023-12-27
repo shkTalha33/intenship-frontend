@@ -12,7 +12,7 @@ export default function FeaturedItems() {
 
     useEffect(() => {
 
-      axios.get("https://intenship-deploy.vercel.app/items/featured")
+      axios.get("http://localhost:8000/items/featured")
       .then(res=>{
          const response = res.data.message
         setProducts(response)
