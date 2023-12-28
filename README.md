@@ -1,8 +1,11 @@
 
 # Shoes Hub
 
+ShoeHub is  E-commerce website for selling shoes across all over the world.
+The user can visit website without login and see the products and also have an access to Add to Cart the product. But to see cart products he/she should  have to login first otherwise they didnot be able to see the products. After login they can go to cart page and where they can see all the cart products and can delete and increase the quantity of product accrording to their need.
+
 In this website we basically added the shoes through  Admin Panel.
-The user can visit website without login and see the products and also have an access to Add to Cart the product. But to see cart products he/she should  have to login first and if he/she didnot login then cart page will not be shown to them. After login they can go to cart page and where they can see the products and can delete and increase the quantity of product accrording to their needs.
+The image of product is directly stores in cloudinary and from thier we just get its secure_url and id to fetch and update or delete the image in future and the image url and product details are then stores in mongodb.
 
 For payment we added a Stripe Payment Gateway when clicks it on checkout button the it redirects on the stripe checkout page where he/she can added his information and buy the products. If everything is going perfectly is redirects on the checkout succesful page, Otherwise it redirects on checkout unsuccesful page
 
