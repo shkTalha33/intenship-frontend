@@ -1,4 +1,4 @@
-import { Button, message } from 'antd'
+import { Button, message ,Spin} from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -8,6 +8,7 @@ import DiscountedPriceCalculation from "../../../components/DiscountedPriceCalcu
 export default function ProductPage() {
 
     const [singleProduct, setSingleProduct] = useState({})
+    const [loading, setLoading] = useState(true)
     const params = useParams()
     const productId = params.id
      const {dispatch} = useCartContext()
@@ -23,7 +24,7 @@ export default function ProductPage() {
 const headers = {
      'Content-Type':'application/json'
 }
-
+      setLoading(true)
       axios.get(`${import.meta.env.VITE_APP_BASE_URL}/products/getsingleproduct/${productId}`,{headers})
       .then(res=>{
         const responce = res.data.message[0]
@@ -31,6 +32,8 @@ const headers = {
       })
       .catch(err=>{
         console.error(err);
+      }).finally(()=>{
+         setLoading(false)
       })
 
       
@@ -39,7 +42,8 @@ const headers = {
     
   return (
     <>
-     
+     {loading ? <Spin spinning={loading} size="large" className='flex items-center justify-center h-[90vh] w-[100vw]'></Spin>
+     :
        <div className="single-page md:w-4/6 md:flex justify-between    mx-auto md:py-20 py-10">
            <div className="img-section mx-auto w-[60%]  md:w-[46%]">
             <img  src={singleProduct.img_url} alt={singleProduct.productTitle} />
@@ -69,6 +73,7 @@ const headers = {
               <Button type='submit'  className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' onClick={()=>handleAddToCart(singleProduct)}>Add To Cart</Button>
            </div>
        </div>
+}
     </>
   )
 }
