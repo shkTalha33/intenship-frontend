@@ -6,9 +6,9 @@ const CartPriceCalculation = ({cart,shippingFees}) => {
    })
   
    if (shippingFees) {
-     return Math.round(totalAmount + 30)
+     return (totalAmount + 30)
    }
-   return Math.round(totalAmount)
+   return (totalAmount)
 
 }
 

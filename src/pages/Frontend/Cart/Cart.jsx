@@ -91,7 +91,7 @@ const handleIncrement = (id) => {
          ) : 
  
          <>
-         <h1 className="text-gray-300 font-bold text-2xl  md:text-4xl text-center mt-20 mb-10">
+         <h1 className="text-slate-400 font-semiBold text-3xl  md:text-5xl text-center mt-20 mb-10">
            Cart Products
          </h1>
  
@@ -100,13 +100,14 @@ const handleIncrement = (id) => {
             
            <div className="overflow-x-auto mb-8 mt-20">
              <table className="min-w-full bg-white  hover:table-fixed  ">
-               <thead  style={{backgroundColor:"#001f54"}} className="text-white" > 
+               <thead style={{background:"#1b4332"}}  className="text-white " > 
                  <tr className="text-lg ">
-                   <th className="px-4 py-6 "> Image</th>
-                   <th className="px-4 py-6 ">Price</th>
-                   <th className="px-4 py-6 ">Quantity </th>
-                   <th className="px-4 py-6 "> SubTotal   </th>
-                   <th className="px-4 py-6 ">Delete</th>
+                   <th className="px-4 py-6 border-none"> Image</th>
+                   <th className="px-4 py-6 border-none">Price</th>
+                   <th className="px-4 py-6 border-none">Discount</th>
+                   <th className="px-4 py-6 border-none">Quantity </th>
+                   <th className="px-4 py-6 border-none"> SubTotal   </th>
+                   <th className="px-4 py-6 border-none">Delete</th>
                  </tr>
                </thead>
                <tbody className="border-none">
@@ -117,7 +118,10 @@ const handleIncrement = (id) => {
                         <tr key={i} className="hover:bg-gray-100 text-center text-xl font-bold  border-b-2 ">
                         <td className=" w-[70px]"><Image className="rounded-full" src={ prod.img_url} width="100%" /></td>
                         <td >
-                         <DiscountedPriceCalculation discount={prod.productDiscount} price={prod.productPrice} />$
+                         $<DiscountedPriceCalculation discount={prod.productDiscount} price={prod.productPrice} />
+                        </td>
+                        <td >
+                         <span className="text-slate-500">{prod.productDiscount}%</span>
                         </td>
                         <td className=" text-slate-500">
                           <Space>
@@ -128,7 +132,7 @@ const handleIncrement = (id) => {
                         </td>
                         <td className="  "> 
                            {/* {prod.productPrice * prod.quantity} */}
-                           <DiscountedPriceCalculation quantity={prod.quantity} price={prod.productPrice} discount={prod.productDiscount} />$
+                           $<DiscountedPriceCalculation quantity={prod.quantity} price={prod.productPrice} discount={prod.productDiscount} />
                         </td>
                         <td className="  font-bold text-2xl text-red-600 ">
                           <Tooltip title="Delete" placement="right" >
@@ -154,19 +158,19 @@ const handleIncrement = (id) => {
                    <Card  className=" px-5 py-5 sm:p-16 mx-5 md:mx-0 bg-neutral-100 border-0 rounded-md" style={{boxShadow: "rgba(0, 0, 0, 0.25) 0px 25px 50px -12px"}}>
                        <Space className="flex items-center justify-between">
                          <h1 className="text-xl sm:text-2xl font-semiBold">Sub Amount</h1>
-                         <p className="text-xl sm:text-2xl text-slate-500"><CartPriceCalculation cart={cart} />$</p>
+                         <p className="text-xl sm:text-2xl text-slate-500">$<CartPriceCalculation cart={cart} /></p>
                        </Space>
                        <br />
                        <Space className="flex items-center justify-between">
                          <h1 className="text-xl sm:text-2xl font-semiBold">Shipping Fees</h1>
-                         <p className="text-xl sm:text-2xl text-slate-500">30$</p>
+                         <p className="text-xl sm:text-2xl text-slate-500">$30</p>
                        </Space>
                     
                        <Divider className="w-[80%] mx-auto"/>
                        <Space className="flex items-center justify-between">
                          <h1 className="text-xl sm:text-2xl font-semiBold">Total Amount</h1>
                          
-                         <p className="text-xl sm:text-2xl text-slate-500"><CartPriceCalculation cart={cart} shippingFees={30} />$</p>
+                         <p className="text-xl sm:text-2xl text-slate-500">$<CartPriceCalculation cart={cart} shippingFees={30} /></p>
                        </Space>
                        <Space  className="flex items-center justify-end mt-4 ">
                        <Button type="submit" className="bg-red-800 mt-4  text-white hover:bg-green-600" size="large" onClick={handleCheckout}>Checkout</Button>

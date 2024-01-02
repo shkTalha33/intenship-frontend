@@ -25,9 +25,9 @@ const handleCart = (product) => {
           <p className='text-lg'><strong>Condition:  </strong>{product.productCondition}</p>
            <div  className=' xl:flex justify-between items-center'>
              <p className='text-lg'><strong >Discount: <span className='text-red-500'>
-             <DiscountedPriceCalculation discount={product.productDiscount} price={product.productPrice} />$
+             $<DiscountedPriceCalculation discount={product.productDiscount} price={product.productPrice} />
               </span> </strong></p>
-             <p className='text-lg'><strong>Price:  </strong><span className='line-through text-slate-400'>{product.productPrice}$</span></p>
+             <p className='text-lg'><strong>Price:  </strong><span className='line-through text-slate-400'>${product.productPrice}</span></p>
            </div>
           <Button type='submit' className='w-full mt-5 bg-yellow-400  text-white hover:bg-black hover:text-white transition-all duration-300 ease-in-out cursor-pointer' onClick={()=>handleCart(product)}>Add To Cart</Button>
           </div>

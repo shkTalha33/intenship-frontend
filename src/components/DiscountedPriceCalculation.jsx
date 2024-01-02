@@ -2,10 +2,10 @@ const  DiscountedPriceCalculation = ({price,discount,quantity}) => {
         const discountPrice  =  (price * discount) / 100 
         const discountAmount = (price - discountPrice)
         if (quantity) {
-               const subTotal = Math.round(discountAmount * quantity)
+               const subTotal = (discountAmount * quantity)
                return subTotal 
        }else{
-           return Math.ceil(discountAmount)
+           return (discountAmount)
        }
 
 }

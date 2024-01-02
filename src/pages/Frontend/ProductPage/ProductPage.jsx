@@ -48,11 +48,11 @@ const headers = {
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>
               <p className='text-xl md:text-3xl my-10 '><strong>Discount : </strong>
               <span className='text-red-500'> 
-                  <DiscountedPriceCalculation price = {singleProduct.productPrice} discount ={singleProduct.productDiscount} />$
+                  $<DiscountedPriceCalculation price = {singleProduct.productPrice} discount ={singleProduct.productDiscount} />
               </span>
              
               </p>
-              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong><span className='text-slate-400 line-through'> {singleProduct.productPrice}$</span></p>
+              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong><span className='text-slate-400 line-through'> ${singleProduct.productPrice}</span></p>
               {singleProduct.productSizes && (
               <p className=' text-xl md:text-3xl my-5 md:my-10 px-2 inline bg-[#88c8bc]'>
               <strong>Sizes : </strong>
