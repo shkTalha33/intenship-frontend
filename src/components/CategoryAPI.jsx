@@ -15,7 +15,7 @@ export default function CategoryAPI({selectedCategory}) {
       const categoryFilteration = () => {
         setApiLoading(true)
 
-        axios.get(`http://localhost:8000/items/${selectedCategory}`)
+        axios.get(`${import.meta.env.VITE_APP_BASE_URL}/items/${selectedCategory}`)
         .then(res=>{
           const category = res.data.message
           setApiLoading(false)

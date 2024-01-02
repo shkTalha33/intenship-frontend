@@ -9,11 +9,10 @@ import CategoryAPI from '../../../components/CategoryAPI'
 
 
 export default function Product() {
-  const { filter_products, loading, dispatch } = useFilterContext();
+  const { filter_products,  dispatch } = useFilterContext();
   const [searchterm, setSearchterm] = useState("");
   const [category, setCategory] = useState('olddate');
 
-  // console.log(filter_products)
 
   const handleCategory = (value) => {
      setCategory(value);
@@ -23,14 +22,14 @@ export default function Product() {
     if (setCategory !== "" || null) {
       const searchProducts = () => {
         axios
-          .get(`http://localhost:8000/items/searchbar?term=${searchterm}`)
+          .get(`${import.meta.env.VITE_APP_BASE_URL}/items/searchbar?term=${searchterm}`)
           .then((res) => {
             const searchBar = res.data.message;
             dispatch({ type: 'FILTER_ON_SEARCH', payload: { searchBar } });
           })
           .catch((err) => {
             console.log(err);
-          });
+          })
     };
 
     searchProducts();
@@ -39,9 +38,7 @@ export default function Product() {
 
   return (
     <>
-      {/* {!filter_products.length ? (
-        <Spin spinning={loading} className='h-[100vh] w-full flex items-center justify-center' size="large" />
-       ) : ( */}
+    
         <div className='min-h-[100vh]'>
           <div className="upper-side  md:flex justify-between items-center w-5/6 mx-auto py-10 md:py-20">
             <div className="search-section my-7 md:my-0 md:w-1/5">
@@ -93,7 +90,6 @@ export default function Product() {
           </div>
           {filter_products && <CategoryAPI selectedCategory={category} products={filter_products}  />}
         </div>
-      {/* )} */}
     </>
   );
 }

@@ -24,7 +24,7 @@ const headers = {
      'Content-Type':'application/json'
 }
 
-      axios.get(`http://localhost:8000/products/getsingleproduct/${productId}`,{headers})
+      axios.get(`${import.meta.env.VITE_APP_BASE_URL}/products/getsingleproduct/${productId}`,{headers})
       .then(res=>{
         const responce = res.data.message[0]
         setSingleProduct(responce)

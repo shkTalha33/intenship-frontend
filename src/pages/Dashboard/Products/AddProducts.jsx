@@ -6,7 +6,7 @@ import axios from "axios"
 
 export default function ListItems() {
   const [form] = Form.useForm();
-    const host = "http://localhost:8000"
+  
     const [fileList, setFileList] = useState("")	
     const [loading, setLoading] = useState(false)	
    
@@ -32,7 +32,7 @@ const handleFinish = (values) => {
   setLoading(true)
 
   axios
-    .post(`${host}/products/addproduct`, formData, { headers })
+    .post(`${import.meta.env.VITE_APP_BASE_URL}/products/addproduct`, formData, { headers })
     .then((res) => {
       console.log(res.data);
       message.success("Product has been successfully added!")

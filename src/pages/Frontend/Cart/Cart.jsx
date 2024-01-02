@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Tooltip, Modal, message ,Button,Space,Card,Divider,Image} from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { useCartContext } from "../../../context/cartContext";
@@ -13,19 +13,12 @@ import { useAuthContext } from "../../../context/authContext";
 
 export default function Cart() {
   const { cart,dispatch } = useCartContext();
-  const [totalPrice, setTotalPrice] = useState(null)
   const {auth} = useAuthContext()
+
+  // console.log(import.meta.env.VITE_APP_BASE_URL)
 
   const navigate = useNavigate()
 
-const calculatePrice = () => {
-     const totalPrice = cart.reduce((initailState,price)=> initailState + (price.quantity * price.productPrice),0)
-     setTotalPrice(totalPrice)
-}
-
-useEffect(() => {
-   calculatePrice()
-}, [cart])
 
 
  const handleClearProducts = () => {
@@ -69,7 +62,7 @@ const handleIncrement = (id) => {
          "Content-Type" : "application/json"
       }
 
-       axios.post("https://intenship-deploy-c98b.vercel.app/items/create-checkout-session",body,{headers})
+       axios.post(`${import.meta.env.VITE_APP_BASE_URL}/items/create-checkout-session`,body,{headers})
       .then(res=>{
       
          const session = res.data

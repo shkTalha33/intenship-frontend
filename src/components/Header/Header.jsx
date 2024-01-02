@@ -11,6 +11,7 @@ export default function Header() {
   const { dispatch, auth } = useAuthContext();
   const {cart} = useCartContext()
 
+  console.log(auth)
   
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
  

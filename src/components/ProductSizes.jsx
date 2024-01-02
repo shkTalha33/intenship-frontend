@@ -13,28 +13,35 @@ export default function ProductSizes() {
     );
   };
 
-  useEffect(() => {
+
+  const selectedSizeApi = () => {
     axios
-      .get(`http://localhost:8000/items/size?sizes=${selectedSizes}`)
-      .then((res) => {
-        const sizes = res.data.message;
-        dispatch({ type: "FILTRATION_ON_SIZES", payload: { sizes } });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [selectedSizes]);
+    .get(`${import.meta.env.VITE_APP_BASE_URL}/items/size?sizes=${selectedSizes}`)
+    .then((res) => {
+      const sizes = res.data.message;
+      dispatch({ type: "FILTRATION_ON_SIZES", payload: { sizes } });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+  }
+
+const allSizeApi = () => { 
+  axios
+  .get(`${import.meta.env.VITE_APP_BASE_URL}/items/allsizes`)
+  .then((res) => {
+    setSizes(res.data.message);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+}
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/items/allsizes")
-      .then((res) => {
-        setSizes(res.data.message);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    allSizeApi()
+    selectedSizeApi()
+  }, [selectedSizes]);
+
 
   return (
     <>

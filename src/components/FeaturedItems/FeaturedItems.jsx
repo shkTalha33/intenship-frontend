@@ -12,7 +12,7 @@ export default function FeaturedItems() {
 
     useEffect(() => {
 
-      axios.get("http://localhost:8000/items/featured")
+      axios.get(`${import.meta.env.VITE_APP_BASE_URL}/items/featured`)
       .then(res=>{
          const response = res.data.message
         setProducts(response)

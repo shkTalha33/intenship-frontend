@@ -2,27 +2,30 @@ import {  Button, Divider, Form, Input, message } from 'antd'
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../../context/authContext'
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false)
-  // const host = "https://intenship-deploy.vercel.app/"
   const navigate =  useNavigate()
+  const {dispatch} = useAuthContext()
   const handleFinish = (values) => {
     const { cpassword, ...dataToSend } = values;
     const headers = {
       'ContentType' : 'application/json'
     }
     setLoading(true)
-    axios.post(`http://localhost:8000/auth/signup`,dataToSend,{headers})
+    axios.post(`${import.meta.env.VITE_APP_BASE_URL}/auth/signup`,dataToSend,{headers})
     .then(res=>{
       const token = res.data.message
-       localStorage.setItem("auth-token",token)
-       navigate("/")
-      //  dispatch({type:"SET_LOGGED_IN"})
+      console.log(token)
+          navigate("/")
+          dispatch({type:"SET_LOGGED_IN"})
+          localStorage.setItem("auth-token",token)
        message.success("New User SignUp successfully")
 
     })
     .catch(err=>{
+      console.error(err);
       message.error("Something went wrong while SignUp new user")
     })
     .finally(()=>{
@@ -91,7 +94,7 @@ export default function SignUp() {
             placeholder="Enter your Confirm password"
           />
         </Form.Item>
-        <Button  className="text-white mt-4   bg-blue-500 w-full" htmlType="submit"  loading={loading} >
+        <Button type='submit' className="text-white mt-4   bg-blue-500 w-full" htmlType="submit"  loading={loading} >
           SignUp
         </Button>
         <p className='font-bold mt-5'> Have an a Account? <Link className='text-blue-600' to="/auth/signin">Sign in</Link> Here.</p>

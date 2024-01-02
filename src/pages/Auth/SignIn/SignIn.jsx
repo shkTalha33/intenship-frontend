@@ -7,7 +7,7 @@ import { useAuthContext } from '../../../context/authContext'
 export default function SignIn() {
 
 const {dispatch}  = useAuthContext()
-  const naviagte = useNavigate()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const handleFinish = (values) => {
     
@@ -15,12 +15,13 @@ const {dispatch}  = useAuthContext()
       'Content-Type': 'application/json'
    }
         setLoading(true)
-        axios.post(`http://localhost:8000/auth/signin`,values,{headers})
+        axios.post(`${import.meta.env.VITE_APP_BASE_URL}/auth/signin`,values,{headers})
         .then((res)=>{
           const token = res.data.message
-          naviagte("/")
+          navigate("/")
           dispatch({type:"SET_LOGGED_IN"})
           localStorage.setItem("auth-token",token)
+          message.success("Login successfully")
         })
        .catch (error=> {
         console.error(error);
@@ -57,7 +58,7 @@ const {dispatch}  = useAuthContext()
             placeholder="Enter your password"
           />
         </Form.Item>
-        <Button  className="text-white mt-4  bg-blue-500 w-full" htmlType="submit"  loading={loading} >
+        <Button type='submit' className="text-white mt-4  bg-blue-500 w-full" htmlType="submit"  loading={loading} >
           SignIn
         </Button>
         <p className='font-bold mt-5'>Don't Have an Account? <Link className='text-blue-600' to="/auth/signup">Sign Up</Link> Here.</p>
