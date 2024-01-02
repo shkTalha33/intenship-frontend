@@ -21,10 +21,10 @@ const handleCart = (product) => {
         <Card  hoverable={true} key={i} className='cursor-auto border mx-auto mt-5 w-[80%] md:mt-0 sm:w-[45%] lg:w-[30%] md:mx-2 mb-4   hover:border-0  '>
             <img src={product.img_url}  onClick={()=>{navigate(`/productpage/${product._id}`)}} alt={product.productTitle} className='h-[50%] hover:h-[60%] cursor-pointer  p-2 hover:p-0 transition-all ease-in duration-200' />
           <div className="detail px-5 my-8">
-          <p className='text-lg font-semibold text-slate-500'>{product.productTitle}</p>
+          <p className='text-lg font-bold text-slate-500'>{product.productTitle}</p>
           <p className='text-lg md:text-xl'><strong>Condition:  </strong>{product.productCondition}</p>
-          <p className='text-lg md:text-xl font-extrabold '><strong>Price : </strong>
-              <span className='text-red-600 '> 
+          <p className='text-lg md:text-xl  '><strong>Price : </strong>
+              <span className='text-red-600  font-bold'> 
                   $<DiscountedPriceCalculation price = {product.productPrice} discount ={product.productDiscount} />
                   <sub className='text-sm text-black font-bold line-through ml-1'>${product.productPrice}</sub>
               </span>

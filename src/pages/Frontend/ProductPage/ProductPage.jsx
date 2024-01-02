@@ -46,8 +46,8 @@ const headers = {
            </div>
            <div className="detail-section px-3 md:px-0 mx-auto md:w-[46%]">
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>
-              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong>
-              <span className='text-red-600'> 
+              <p className='text-2xl md:text-3xl my-5 '><strong>Price : </strong>
+              <span className='text-red-600 font-bold'> 
                   $<DiscountedPriceCalculation price = {singleProduct.productPrice} discount ={singleProduct.productDiscount} />
                   <sub className='text-sm text-black font-bold line-through ml-1'>${singleProduct.productPrice}</sub>
               </span>
