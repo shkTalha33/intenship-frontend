@@ -1,7 +1,8 @@
-import { Card,Button ,message} from 'antd'
+import { Card,Button ,message,Space} from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/cartContext'
+import DiscountedPriceCalculation from './DiscountedPriceCalculation'
 
 export default function ProductCard({products}) {
   const  navigate = useNavigate()
@@ -22,7 +23,12 @@ const handleCart = (product) => {
           <div className="detail px-5 my-8">
           <p className='text-lg'>{product.productTitle}</p>
           <p className='text-lg'><strong>Condition:  </strong>{product.productCondition}</p>
-          <p className='text-lg'><strong>Price:  </strong>{product.productPrice}$</p>
+           <div  className=' xl:flex justify-between items-center'>
+             <p className='text-lg'><strong >Discount: <span className='text-red-500'>
+             <DiscountedPriceCalculation discount={product.productDiscount} price={product.productPrice} />$
+              </span> </strong></p>
+             <p className='text-lg'><strong>Price:  </strong><span className='line-through text-slate-400'>{product.productPrice}$</span></p>
+           </div>
           <Button type='submit' className='w-full mt-5 bg-yellow-400  text-white hover:bg-black hover:text-white transition-all duration-300 ease-in-out cursor-pointer' onClick={()=>handleCart(product)}>Add To Cart</Button>
           </div>
         </Card>

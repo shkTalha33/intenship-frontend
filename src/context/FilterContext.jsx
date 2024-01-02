@@ -6,7 +6,6 @@ const filterContext = createContext()
 export default function FilterContextProvider(props) {
     const {all_products,loading} = useProductContext()
 
-
     const initailState = {
         products:[],
         filter_products:[],
@@ -21,6 +20,7 @@ export default function FilterContextProvider(props) {
     const reducer = (state,action) => {
         switch (action.type) {
             case "SET_PRODUCTS":
+             
              return {
                       ...state,
                       products:action.payload,
@@ -63,7 +63,7 @@ export default function FilterContextProvider(props) {
         }
 
        getProducts()
-    }, [all_products])
+    }, [])
     
 
   return (

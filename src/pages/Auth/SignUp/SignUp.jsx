@@ -18,6 +18,7 @@ export default function SignUp() {
       const token = res.data.message
        localStorage.setItem("auth-token",token)
        navigate("/")
+      //  dispatch({type:"SET_LOGGED_IN"})
        message.success("New User SignUp successfully")
 
     })

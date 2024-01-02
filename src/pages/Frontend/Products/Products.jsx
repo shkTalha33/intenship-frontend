@@ -13,7 +13,7 @@ export default function Product() {
   const [searchterm, setSearchterm] = useState("");
   const [category, setCategory] = useState('olddate');
 
-  console.log(filter_products)
+  // console.log(filter_products)
 
   const handleCategory = (value) => {
      setCategory(value);
@@ -23,7 +23,7 @@ export default function Product() {
     if (setCategory !== "" || null) {
       const searchProducts = () => {
         axios
-          .get(`https://intenship-deploy.vercel.app/items/searchbar?term=${searchterm}`)
+          .get(`http://localhost:8000/items/searchbar?term=${searchterm}`)
           .then((res) => {
             const searchBar = res.data.message;
             dispatch({ type: 'FILTER_ON_SEARCH', payload: { searchBar } });

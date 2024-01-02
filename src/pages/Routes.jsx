@@ -8,12 +8,6 @@ import {Routes,Route} from "react-router-dom"
 
 export default function Index() {
 
-    // const {auth} = useAuthContext()
-
-    // if (!auth) {
-    //    return <Spin className="h-[100vh] w-[100vw] flex items-center justify-center " spinning={true} size='large' ></Spin>
-    // }
-
   return (
     <>
        <Routes>

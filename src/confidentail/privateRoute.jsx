@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { useAuthContext } from '../context/authContext'
+import React from 'react'
 import {useLocation,Navigate} from "react-router-dom"
-import {Spin} from "antd"
 
 export default function privateRoute({Component}) {
 
     const location = useLocation()
     
- const token =  localStorage.getItem("auth-token")
+ 
+   const  token =  localStorage.getItem("auth-token")
 
-   if (!token) {
-    return <Navigate to="/auth/signin" state={{from:location.pathname}} replace /> 
-    }
+
+
+
+if (!token) {
+ return <Navigate to="/auth/signin" state={{from:location.pathname}} replace /> 
+ }
+
  
 
   return (

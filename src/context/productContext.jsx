@@ -12,6 +12,15 @@ export default function ProductContextProvider(props) {
   const reducer = (state, action) => {
     switch (action.type) {
       case "ALL_PRODUCTS":
+      //   const updateProducts = action.payload.map((prod)=>{
+      //     const productDiscount = ( prod.productPrice * prod.productDiscount ) / 100
+      //     const discountedPrice =  prod.productPrice - productDiscount  
+      //     return {
+      //        ...prod,
+      //        discountedPrice : discountedPrice
+      //     }
+      // })
+      // console.log("product at reducer",action.payload)
         return { ...state, all_products: action.payload, loading: false }; 
       default:
       return  state;
@@ -25,7 +34,16 @@ export default function ProductContextProvider(props) {
       .get("http://localhost:8000/products/getproducts")
       .then((res) => {
         const products = res.data.message;
-        dispatch({ type: "ALL_PRODUCTS", payload: products });
+        const updateProducts = products.map((prod)=>{
+          const productDiscount = ( prod.productPrice * prod.productDiscount ) / 100
+          const discountedPrice =  prod.productPrice - productDiscount  
+          return {
+            ...prod,
+            discountedPrice : discountedPrice
+          }
+      })
+      // console.log("updated Products" , updateProducts)
+        dispatch({ type: "ALL_PRODUCTS", payload: updateProducts });
       })
       .catch((err) => {
         console.error(err);

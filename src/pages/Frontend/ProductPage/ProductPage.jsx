@@ -2,8 +2,8 @@ import { Button, message } from 'antd'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useAuthContext } from '../../../context/authContext'
 import { useCartContext } from '../../../context/cartContext'
+import DiscountedPriceCalculation from "../../../components/DiscountedPriceCalculation"
 
 export default function ProductPage() {
 
@@ -11,15 +11,11 @@ export default function ProductPage() {
     const params = useParams()
     const productId = params.id
      const {dispatch} = useCartContext()
-     const {auth} = useAuthContext()
 
     const handleAddToCart = (product) => {
-      if (auth) {
         message.success("Product is Add To Cart")
         dispatch({type:"ADD_TO_CART",payload:product})
-      }else{
-        message.error("Please Login First")
-      }
+      
     }
 
  
@@ -50,7 +46,13 @@ const headers = {
            </div>
            <div className="detail-section px-3 md:px-0 mx-auto md:w-[46%]">
               <p className='text-2xl md:text-3xl font-bold'>{singleProduct.productTitle}</p>
-              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong> {singleProduct.productPrice}$</p>
+              <p className='text-xl md:text-3xl my-10 '><strong>Discount : </strong>
+              <span className='text-red-500'> 
+                  <DiscountedPriceCalculation price = {singleProduct.productPrice} discount ={singleProduct.productDiscount} />$
+              </span>
+             
+              </p>
+              <p className='text-xl md:text-3xl my-10 '><strong>Price : </strong><span className='text-slate-400 line-through'> {singleProduct.productPrice}$</span></p>
               {singleProduct.productSizes && (
               <p className=' text-xl md:text-3xl my-5 md:my-10 px-2 inline bg-[#88c8bc]'>
               <strong>Sizes : </strong>
