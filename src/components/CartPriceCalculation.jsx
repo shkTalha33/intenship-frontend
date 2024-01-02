@@ -6,9 +6,9 @@ const CartPriceCalculation = ({cart,shippingFees}) => {
    })
   
    if (shippingFees) {
-     return (totalAmount + 30)
+     return (totalAmount + 30).toFixed(2)
    }
-   return (totalAmount)
+   return (totalAmount).toFixed(2)
 
 }
 
