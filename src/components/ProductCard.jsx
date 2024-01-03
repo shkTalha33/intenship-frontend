@@ -1,10 +1,11 @@
-import { Card,Button ,message,Space} from 'antd'
+import { Card,Button ,message} from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/cartContext'
 import DiscountedPriceCalculation from './DiscountedPriceCalculation'
 
-export default function ProductCard({products}) {
+
+export default function ProductCard({products,featuredText}) {
   const  navigate = useNavigate()
 const {addToCart} = useCartContext()
 

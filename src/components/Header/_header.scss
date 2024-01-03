@@ -1,27 +1,27 @@
-header{
-    .search-bar {
-        border: 1px solid #88c8bc;
-      overflow: hidden;
+// header{
+//     .search-bar {
+//         border: 1px solid #88c8bc;
+//       overflow: hidden;
 
-        .ant-input {
-            border: none;
-          &:hover {
-            background-color: transparent;
-          }
+//         .ant-input {
+//             border: none;
+//           &:hover {
+//             background-color: transparent;
+//           }
       
-          &:focus {
-            border: none;
-            box-shadow: none;
-        }
-    }
-    .ant-input-group >.ant-input-group-addon:last-child{
-      background-color: #88c8bc;
-      inset-inline-start: 0px
-    }
-    .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover{
-      background-color: #285850;
-    }
-      }
+//           &:focus {
+//             border: none;
+//             box-shadow: none;
+//         }
+//     }
+//     .ant-input-group >.ant-input-group-addon:last-child{
+//       background-color: #88c8bc;
+//       inset-inline-start: 0px
+//     }
+//     .ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover{
+//       background-color: #285850;
+//     }
+//       }
       // .auth-section{
       //   .login{
       //     .ant-btn-default:not(:disabled):not(.ant-btn-disabled){
@@ -30,4 +30,19 @@ header{
       //     }
       //   }
       // }
+// }
+
+header{
+  .ant-tabs-top >.ant-tabs-nav::before{
+    visibility: hidden;
+  }
+  .ant-tabs-top >.ant-tabs-nav .ant-tabs-ink-bar{
+    background-color: white;
+  }
+  .ant-tabs .ant-tabs-tab-btn{
+    color: rgb(180, 165, 165);
+  }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color: white;
+  }
 }

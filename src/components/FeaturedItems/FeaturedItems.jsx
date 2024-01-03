@@ -32,7 +32,7 @@ export default function FeaturedItems() {
                 FEATURED ITEM'S
             </div>
             <div className="featured-images md:w-5/6 md:flex mx-auto px-2 justify-between items-center flex-wrap">
-               <ProductCard products={products} />
+               <ProductCard products={products}  />
             </div>
         </div>
     </>
