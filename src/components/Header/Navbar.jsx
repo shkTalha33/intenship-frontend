@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link ,useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link ,useNavigate,useLocation} from "react-router-dom";
 import {Tabs,message} from "antd";
 import "./_header.scss"
 import { useAuthContext } from "../../context/authContext";
@@ -8,7 +8,20 @@ import { NavButtons } from "./NavButtons";
 export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(true);
+  const [activeTab, setActiveTab] = useState("/");
   const navigate = useNavigate()
+
+  const location = useLocation()
+
+  const getCurrentOpenTab = () => {
+       const currentTab = location.pathname
+       setActiveTab(currentTab)
+  }
+
+  useEffect(() => {
+    getCurrentOpenTab()
+  }, [location.pathname])
+  
 
   const handleNavbar = () => {
      setIsOpen(!isOpen)
@@ -17,6 +30,7 @@ export default function Navbar() {
   const onChange = (key) => {
     if (key === "/cart") {
       if (!auth) {
+        navigate("/auth/signin")
        return message.error("Please Login First")  
       }
     }
@@ -39,7 +53,6 @@ export default function Navbar() {
     {
       key: '/cart',
       label: 'Cart',
-      children: '',
       
     },
   ];
@@ -83,7 +96,7 @@ export default function Navbar() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12 text-white">
-             <Tabs defaultActiveKey="1" items={items} size="large"  onChange={onChange}  />
+             <Tabs defaultActiveKey="1" activeKey={activeTab} items={items} size="large"  onChange={onChange}  />
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
            <NavButtons direction="horizontal" color="white" size="small" screen="computer"/>
