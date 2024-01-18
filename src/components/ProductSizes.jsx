@@ -48,7 +48,8 @@ const allSizeApi = () => {
       {sizes.map((size) => (
         <div
           key={size}
-          className={`boxes border cursor-pointer p-2 my-2 ${
+          style={{border:"1px solid #52796f"}}
+          className={`boxes  cursor-pointer p-2 my-2 ${
             selectedSizes.includes(size) ? "bg-[#285850] text-white" : ""
           }`}
           onClick={() => handleSizes(size)}

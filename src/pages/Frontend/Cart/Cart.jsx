@@ -87,11 +87,11 @@ const handleIncrement = (id) => {
        >
          {cart.length === 0 ? (
         
-           <h1  className="flex pt-[50%] md:pt-[25%] item-center  justify-center text-2xl   md:text-4xl font-bold text-teal-400">No Products To Show</h1>
+           <h1  className="flex pt-[50%] md:pt-[25%] item-center  justify-center text-2xl   md:text-4xl font-bold " style={{color:"#84a98c"}}>No Products To Show</h1>
          ) : 
  
          <>
-         <h1 className="text-slate-400 font-semiBold text-3xl  md:text-5xl text-center mt-20 mb-10">
+         <h1 className="text-slate-400 font-semiBold text-3xl  md:text-5xl text-center mt-20 mb-10" style={{color:"#84a98c"}}>
            Cart Products
          </h1>
  
@@ -99,8 +99,8 @@ const handleIncrement = (id) => {
  
             
            <div className="overflow-x-auto mb-8 mt-20">
-             <table className="min-w-full bg-white  hover:table-fixed  ">
-               <thead style={{background:"#1b4332"}}  className="text-white " > 
+             <table className="min-w-full bg-white text-center  hover:table-fixed  ">
+               <thead style={{background:"#03045e"}}  className="text-white " > 
                  <tr className="text-lg ">
                    <th className="px-4 py-6 border-none"> Image</th>
                    <th className="px-4 py-6 border-none">Price</th>
@@ -121,21 +121,21 @@ const handleIncrement = (id) => {
                          $<DiscountedPriceCalculation discount={prod.productDiscount} price={prod.productPrice} />
                         </td>
                         <td >
-                         <span className="text-slate-500">{prod.productDiscount}%</span>
+                         <span className="" style={{color:"#7f7f7f"}}>{prod.productDiscount}%</span>
                         </td>
                         <td className=" text-slate-500">
                           <Space>
-                          <Button type="submit" className="bg-red-600 text-white" onClick={()=>handleDecrement(prod._id)} > - </Button>
+                          <Button type="submit" style={{background:"red"}} className=" text-white" onClick={()=>handleDecrement(prod._id)} > - </Button>
                             <span className="text-2xl">{prod.quantity}</span>
-                          <Button type="submit" className="bg-blue-600 text-white" onClick={()=>handleIncrement(prod._id)} > + </Button>
+                          <Button type="submit" style={{background:"#4361ee"}} className=" text-white" onClick={()=>handleIncrement(prod._id)} > + </Button>
                           </Space>
                         </td>
                         <td className="  "> 
                            {/* {prod.productPrice * prod.quantity} */}
                            $<DiscountedPriceCalculation quantity={prod.quantity} price={prod.productPrice} discount={prod.productDiscount} />
                         </td>
-                        <td className="  font-bold text-2xl text-red-600 ">
-                          <Tooltip title="Delete" placement="right" >
+                        <td className="  font-bold text-2xl " style={{color:"#ef233c"}}>
+                          <Tooltip title="Delete" placement="right"  >
                           <DeleteFilled  className="mx-auto cursor-pointer" onClick={()=>handleDelete(prod._id)}  />
                           </Tooltip>
                         </td>
@@ -150,8 +150,8 @@ const handleIncrement = (id) => {
  
            </div>
                <div className="flex items-center justify-between md:justify-around mb-5">
-                  <Button type="submit" className="bg-blue-500 text-white mr-0 hover:bg-blue-400" size="large" onClick={()=>navigate("/products")} >Continue Shopping</Button>
-                  <Button type="submit" className="bg-red-500 text-white hover:bg-red-400" size="large" onClick={handleClearProducts}>Clear Products</Button>
+                  <Button type="submit" style={{background:"#0077b6"}}  className=" text-white mr-0 " size="large" onClick={()=>navigate("/products")} >Continue Shopping</Button>
+                  <Button type="submit" style={{background:"#9b2226"}} className=" text-white hover:bg-red-400" size="large" onClick={handleClearProducts}>Clear Products</Button>
             
                </div>
                <div className="checkout sm:w-[70%] md:w-[70%] lg:w-[40vw] xl:w-[40%] my-20 m-auto">
@@ -173,7 +173,7 @@ const handleIncrement = (id) => {
                          <p className="text-xl sm:text-2xl text-slate-500">$<CartPriceCalculation cart={cart} shippingFees={30} /></p>
                        </Space>
                        <Space  className="flex items-center justify-end mt-4 ">
-                       <Button type="submit" className="bg-red-800 mt-4  text-white hover:bg-green-600" size="large" onClick={handleCheckout}>Checkout</Button>
+                       <Button type="submit" style={{background:"#354f52"}} className=" mt-4  text-white " size="large" onClick={handleCheckout}>Checkout</Button>
                        </Space>
                    </Card>
                </div>

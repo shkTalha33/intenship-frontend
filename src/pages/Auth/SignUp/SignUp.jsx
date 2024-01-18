@@ -34,10 +34,10 @@ export default function SignUp() {
   }
   return (
     <>
-        <div className="flex flex-col justify-center bg-[#88c8bc] px-3 md:px-0 items-center h-screen">
+        <div className="flex flex-col justify-center l  items-center h-screen">
       <div
-        className="bg-white p-8 rounded-lg shadow-xl w-full  sm:w-3/4 md:w-2/4 lg:w-2/6"
-        style={{ margin: '0 auto' }} // Added style to center the form
+        className="bg-white p-8 rounded-lg md:shadow-2xl w-full  sm:w-3/4 md:w-2/4 lg:w-2/6"
+        style={{ margin: '0 auto' }} 
       >
         <h1 className="text-4xl font-medium text-center mb-4">Sign Up</h1>
         <Divider />
@@ -94,10 +94,10 @@ export default function SignUp() {
             placeholder="Enter your Confirm password"
           />
         </Form.Item>
-        <Button type='submit' className="text-white mt-4   bg-blue-500 w-full" htmlType="submit"  loading={loading} >
+        <Button type='submit' className="text-white mt-4   bg-blue-500 w-full" htmlType="submit"  loading={loading} style={{background:"#00b4d8"}}>
           SignUp
         </Button>
-        <p className='font-bold mt-5'> Have an a Account? <Link className='text-blue-600' to="/auth/signin">Sign in</Link> Here.</p>
+        <p className='font-bold mt-5'> Have an a Account? <Link className='underline' style={{color:"#00b4d8"}} to="/auth/signin">Sign in</Link> Here.</p>
       </Form>
       </div>
     </div>

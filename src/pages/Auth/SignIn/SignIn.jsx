@@ -33,9 +33,9 @@ const {dispatch}  = useAuthContext()
   }
   return (
     <>
-        <div className="flex flex-col justify-center bg-[#88c8bc] px-3 md:px-0 items-center h-screen">
+        <div className="flex flex-col justify-center   items-center h-screen">
       <div
-        className="bg-white p-8 rounded-lg shadow-xl w-full  sm:w-3/4 md:w-2/4 lg:w-1/4"
+        className="bg-white p-8 rounded-lg md:shadow-2xl w-full  sm:w-3/4 md:w-2/4 lg:w-1/4"
         style={{ margin: '0 auto' }} // Added style to center the form
       >
         <h1 className="text-3xl font-medium text-center mb-4">Sign In</h1>
@@ -58,10 +58,10 @@ const {dispatch}  = useAuthContext()
             placeholder="Enter your password"
           />
         </Form.Item>
-        <Button type='submit' className="text-white mt-4  bg-blue-500 w-full" htmlType="submit"  loading={loading} >
+        <Button type='submit'  className="text-white mt-4  w-full" htmlType="submit"  loading={loading}  style={{background:"#00b4d8"}}>
           SignIn
         </Button>
-        <p className='font-bold mt-5'>Don't Have an Account? <Link className='text-blue-600' to="/auth/signup">Sign Up</Link> Here.</p>
+        <p className='font-bold mt-5'>Don't Have an Account? <Link className='underline' style={{color:"#00b4d8"}} to="/auth/signup">Sign Up</Link> Here.</p>
       </Form>
       </div>
     </div>

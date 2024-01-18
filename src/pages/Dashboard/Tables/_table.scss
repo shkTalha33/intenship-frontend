@@ -1,0 +1,20 @@
+.ant-table-wrapper{
+    .ant-table-tbody>tr>td{
+        padding: 5px 10px ;
+    }
+    .ant-table-tbody{
+       text-align: center;
+       font-size: 16px;
+       font-weight: 500;
+       background-color: white;
+     
+
+   }
+    .ant-table-thead{
+       font-size: 20px;
+       tr>th{
+          padding: 15px;
+          text-align: center;
+       }
+   }
+}

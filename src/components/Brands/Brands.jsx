@@ -14,12 +14,12 @@ export default function Brands() {
          <div className="brands-text text-center text-xl font-bold text-gray-300">
             TRUSTED PARTNERS
          </div>
-         <div className="brands-logo w-[94%] md:w-4/6 m-auto pt-9 pb-20  flex-wrap my-3 flex justify-between items-center">
-            <img src={brand1} alt="" className='my-3 w-[46%] md:w-[16%]' />
-            <img src={brand2} alt="" className='my-3 w-[46%] md:w-[16%]' />
-            <img src={brand3} alt="" className='my-3 w-[46%] md:w-[16%]' />
-            <img src={brand4} alt="" className='my-3 w-[46%] md:w-[16%]' />
-            <img src={brand5} alt="" className='my-3 w-[46%] md:w-[16%]' />
+         <div className="brands-logo w-[94%] md:w-4/6 m-auto pt-9 pb-20  flex-wrap my-3 flex justify-center items-center">
+            <img src={brand1} alt="" className='my-3 w-[30%] md:w-[16%]' />
+            <img src={brand2} alt="" className='my-3 w-[30%] md:w-[16%]' />
+            <img src={brand3} alt="" className='my-3 w-[30%] md:w-[16%]' />
+            <img src={brand4} alt="" className='my-3 w-[30%] md:w-[16%]' />
+            <img src={brand5} alt="" className='my-3 w-[30%] md:w-[16%]' />
          </div>
        </div>
     </>

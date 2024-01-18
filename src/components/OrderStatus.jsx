@@ -13,7 +13,7 @@ export default function OrderStatus({image,orderText,OrderStatus}) {
             <img src={image} alt="" className='mx-auto' width={150} />
            <h1 className=' text-3xl md:text-4xl'>{OrderStatus}</h1>
              <p className='text-lg md:text-2xl text-slate-400'> {orderText}</p>
-             <Button type='submit' onClick={()=>{navigate("/products")}} className="bg-slate-600 text-white hover:bg-slate-500 hover:text-white"    >Continue Shopping</Button>
+             <Button type='submit' onClick={()=>{navigate("/products")}} style={{background:"#285850"}} className=" text-white hover:bg-slate-500 hover:text-white"    >Continue Shopping</Button>
            </Space>
           </Card>
     </>

@@ -70,7 +70,7 @@ const headers = {
 
               <p className='text-xl md:text-3xl my-5 md:my-10 '><strong>Condition : </strong>{singleProduct.productCondition}</p>
               
-              <Button type='submit'  className='w-full my-5 md:my-20  bg-yellow-400 hover:bg-black hover:text-yellow-400' onClick={()=>handleAddToCart(singleProduct)}>Add To Cart</Button>
+              <Button type='submit' style={{background:"#ffd60a"}}  className='w-full my-5 md:my-20   hover:bg-black hover:text-yellow-400' onClick={()=>handleAddToCart(singleProduct)}>Add To Cart</Button>
            </div>
        </div>
 }

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link ,useNavigate,useLocation} from "react-router-dom";
-import {Tabs,message} from "antd";
+import {Tabs,message,Divider} from "antd";
 import "./_header.scss"
 import { useAuthContext } from "../../context/authContext";
 import { NavButtons } from "./NavButtons";
 
 export default function Navbar() {
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("/");
   const navigate = useNavigate()
 
@@ -107,11 +107,12 @@ export default function Navbar() {
           <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link to="/" className="-m-1.5 p-1.5">
-                <h1 className="font-bold text-3xl text-slate-600">Shoes Hub</h1>
+                <h1 className="font-bold text-3xl " style={{color:"#354f52"}}>Shoes Hub</h1>
               </Link>
               <button
                 type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                style={{color:"gray"}}
+                className="-m-2.5 rounded-md p-2.5 "
               >
                 <span className="sr-only">Close menu</span>
                 <svg
@@ -137,25 +138,26 @@ export default function Navbar() {
                   <Link
                   onClick={()=>{setIsOpen(!isOpen)}}
                     to="/"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-xl font-bold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-xl  leading-7 text-black"
                   >
                     Home
                   </Link>
                   <Link
                   onClick={()=>{setIsOpen(!isOpen)}}
                     to="/products"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-xl font-bold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-xl  leading-7 text-black"
                   >
                     Product
                   </Link>
                   <Link
                   onClick={()=>{setIsOpen(!isOpen)}}
                     to="/cart"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-xl font-bold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-xl  leading-7 text-black"
                   >
                     Cart
                   </Link>
                 </div>
+                <Divider />
                 <div className="py-6">
                   <NavButtons direction="vertical" color="black" size="middle"  setIsOpen={setIsOpen} screen="small" />
                 </div>
@@ -167,3 +169,7 @@ export default function Navbar() {
     </>
   );
 }
+
+ 
+     
+         
