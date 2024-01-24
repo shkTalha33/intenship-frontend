@@ -44,7 +44,6 @@ export default function authContextProvider(props) {
           })
          .catch (error=> {
           console.error(error);
-            // message.error("Something went wrong while login")
         })
     }
       

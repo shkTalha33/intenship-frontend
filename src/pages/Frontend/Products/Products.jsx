@@ -59,7 +59,7 @@ export default function Product() {
                 placeholder="Search Here..."
               />
             </div>
-            <div style={{color:"#cccccc"}} className="total-products md:w-3/5 text-center text-2xl md:text-3xl  md:font-bold">
+            <div  className="total-products md:w-3/5 text-center text-boxdark text-2xl md:text-3xl  font-bold">
               Total Products {filter_products && filter_products.length}
             </div>
             <div className=" hidden md:block filteration-section text-xl md:w-1/5">
@@ -79,7 +79,7 @@ export default function Product() {
               </Select>
             </div>
             <div className="filter-icon block md:hidden" style={{color:"#595959"}} onClick={()=>setOpenFilterDrawer(!openFilterDrawer)}>
-               {<FaFilter color='red' />}
+               {<FaFilter color='#344e41' />}
             </div>
           </div>
           <div className="sidebar md:flex w-5/6 mx-auto">
@@ -91,7 +91,7 @@ export default function Product() {
             <div className="all-products md:w-[70%] lg:w-4/5">
               <div className="sizes-box sm:flex justify-around items-center flex-wrap ">
                 {!filter_products.length  ? (
-                  <div className="no-product text-center text-4xl">
+                  <div className="no-product text-center text-boxdark text-4xl">
                       <h1>No Products To Show</h1>
                   </div>
                 ) : (

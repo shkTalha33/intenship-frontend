@@ -44,7 +44,7 @@ const headers = {
     <>
      {loading ? <Spin spinning={loading} size="large" className='flex items-center justify-center h-[90vh] w-[100vw]'></Spin>
      :
-       <div className="single-page md:w-4/6 md:flex justify-between    mx-auto md:py-20 py-10">
+       <div className="single-page md:w-4/6 md:flex justify-between h-[90vh]    mx-auto md:py-20 py-10">
            <div className="img-section mx-auto w-[60%]  md:w-[46%]">
             <img  src={singleProduct.img_url} alt={singleProduct.productTitle} />
            </div>

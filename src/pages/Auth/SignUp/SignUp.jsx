@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../../context/authContext'
+import AuthAnimation from '../../../components/AuthAnimation'
 
 export default function SignUp() {
   const [loading, setLoading] = useState(false)
@@ -33,7 +34,7 @@ export default function SignUp() {
     })
   }
   return (
-    <>
+    <AuthAnimation>
         <div className="flex flex-col justify-center l  items-center h-screen">
       <div
         className="bg-white p-8 rounded-lg md:shadow-2xl w-full  sm:w-3/4 md:w-2/4 lg:w-2/6"
@@ -101,7 +102,7 @@ export default function SignUp() {
       </Form>
       </div>
     </div>
-    </>
+    </AuthAnimation>
   )
 }
 

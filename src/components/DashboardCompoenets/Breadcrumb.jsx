@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Breadcrumb = ({ pageName }) => {
+const Breadcrumb = ({ pageName,destination,location="" }) => {
     return (
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-title-md2 font-semibold text-black dark:text-white">
@@ -10,7 +10,7 @@ const Breadcrumb = ({ pageName }) => {
         <nav>
           <ol className="flex items-center gap-2">
             <li>
-              <Link to="/dashboard">Dashboard /</Link>
+              <Link to={`/dashboard${location}`}>{destination}</Link>
             </li>
             <li className="text-primary">{pageName}</li>
           </ol>

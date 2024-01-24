@@ -1,10 +1,10 @@
 import React from 'react'
-import AddProducts from './AddProducts'
+import Products from './Products'
 
 export default function index() {
   return (
     <>
-        <AddProducts />
+       <Products />
     </>
   )
 }

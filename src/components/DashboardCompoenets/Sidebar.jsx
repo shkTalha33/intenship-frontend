@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/images/dashboard-images/logo/logo.svg';
 import SidebarLinkGroup from './SidebarLink';
+import { MdProductionQuantityLimits } from "react-icons/md";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const location = useLocation();
@@ -60,7 +61,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     >
       {/* SIDEBAR HEADER */}
       <div className="flex items-center  justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-        <Link to="/dashboard">
+        <Link to="/">
           <h1 className='text-white md:font-bold  text-2xl'>Admin Dashboard</h1>
         </Link>
 
@@ -69,7 +70,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           onClick={() => setSidebarOpen(!sidebarOpen)}
           aria-controls="sidebar"
           aria-expanded={sidebarOpen}
-          className="block lg:hidden"
+          className="block lg:hidden text-white"
         >
           <svg
             className="fill-current"
@@ -154,10 +155,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </SidebarLinkGroup>
               {/* Menu Item Dashboard */}
 
-              {/* Menu Item Tables */}
+              {/* Menu Item Products */}
               <li>
                 <Link
-                  to="/dashboard/tables"
+                  to="/dashboard/products"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                     pathname === '/dashboard/tables' &&
                     'bg-graydark dark:bg-meta-4'
@@ -191,7 +192,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   Products
                 </Link>
               </li>
-              {/* Menu Item Tables */}
+              {/* Menu Item Products */}
+              {/* Menu Item Add Products */}
+              {/* <li>
+                <Link
+                  to="/dashboard/addproduct"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname === '/dashboard/addproduct' &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                {<MdProductionQuantityLimits size={20} />}
+                 Add Products
+                </Link>
+              </li> */}
+              {/* Menu Add Products */}
             </ul>
           </div>
         </nav>

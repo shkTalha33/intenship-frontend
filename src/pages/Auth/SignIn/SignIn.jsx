@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../../context/authContext'
+import AuthAnimation from '../../../components/AuthAnimation'
 
 export default function SignIn() {
 
@@ -32,7 +33,7 @@ const {dispatch}  = useAuthContext()
       })
   }
   return (
-    <>
+    <AuthAnimation>
         <div className="flex flex-col justify-center   items-center h-screen">
       <div
         className="bg-white p-8 rounded-lg md:shadow-2xl w-full  sm:w-3/4 md:w-2/4 lg:w-1/4"
@@ -65,6 +66,6 @@ const {dispatch}  = useAuthContext()
       </Form>
       </div>
     </div>
-    </>
+    </AuthAnimation>
   )
 }

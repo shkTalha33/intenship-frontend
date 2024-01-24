@@ -26,9 +26,11 @@ export default function Cart() {
  }
 
 const handleIncrement = (id) => {
+    message.success("Product Quantity is Increased by One")
      dispatch({type:"SET_INCREMENT",payload:id})
     }
     const handleDecrement = (id) => {
+      message.error("Product Quantity is Decreased by One")
   dispatch({type:"SET_DECREMENT",payload:id})
 }
 
@@ -99,8 +101,8 @@ const handleIncrement = (id) => {
  
             
            <div className="overflow-x-auto mb-8 mt-20">
-             <table className="min-w-full bg-white text-center  hover:table-fixed  ">
-               <thead style={{background:"#03045e"}}  className="text-white " > 
+             <table className="min-w-full  bg-white text-center  hover:table-fixed  ">
+               <thead   className="text-white bg-graydark" > 
                  <tr className="text-lg ">
                    <th className="px-4 py-6 border-none"> Image</th>
                    <th className="px-4 py-6 border-none">Price</th>
@@ -111,11 +113,10 @@ const handleIncrement = (id) => {
                  </tr>
                </thead>
                <tbody className="border-none">
-                 
-           
-                 { cart.map((prod,i)=>{
+                 { cart.map((prod)=>{
                      return(
-                        <tr key={i} className="hover:bg-gray-100 text-center text-xl font-bold  border-b-2 ">
+                     <>
+                        <tr key={prod._id} className="hover:bg-gray text-center text-xl font-bold   ">
                         <td className=" w-[70px]"><Image className="rounded-full" src={ prod.img_url} width="100%" /></td>
                         <td >
                          $<DiscountedPriceCalculation discount={prod.productDiscount} price={prod.productPrice} />
@@ -131,7 +132,6 @@ const handleIncrement = (id) => {
                           </Space>
                         </td>
                         <td className="  "> 
-                           {/* {prod.productPrice * prod.quantity} */}
                            $<DiscountedPriceCalculation quantity={prod.quantity} price={prod.productPrice} discount={prod.productDiscount} />
                         </td>
                         <td className="  font-bold text-2xl " style={{color:"#ef233c"}}>
@@ -140,6 +140,7 @@ const handleIncrement = (id) => {
                           </Tooltip>
                         </td>
                       </tr>
+                     </>
                      )
                  })
        

@@ -13,6 +13,23 @@ export default function ProductContextProvider(props) {
     switch (action.type) {
       case "ALL_PRODUCTS":
         return { ...state, all_products: action.payload, loading: false }; 
+      case "ADD_NEW_PRODUCT":
+        return { ...state, all_products: [...state.all_products,action.payload]}; 
+      case "DELETE_PRODUCT":
+        const deletedProduct = state.all_products.filter(pro=> pro._id !== action.payload)
+         return {
+          ...state,
+          all_products:deletedProduct
+         }
+      case "UPDATE_PRODUCT":
+        const updatedProduct = state.all_products.map((pro)=>{
+          return pro._id === action.payload._id ? { ...pro, ...action.payload } : pro;
+        })
+        console.log(updatedProduct)
+         return {
+          ...state,
+          all_products:updatedProduct
+         }
       default:
       return  state;
     }
