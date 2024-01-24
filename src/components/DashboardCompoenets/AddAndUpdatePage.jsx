@@ -27,7 +27,7 @@ export default function AddAndUpdatePage({
   api,
   dispatchType,
   messageType,
-  requestMethod,
+
 }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -95,24 +95,29 @@ export default function AddAndUpdatePage({
     if (!allowedExtensions.includes(ext)) {
       return message.error('File format must be jpg, png, or jpeg');
     }
-
     let formData;
+
     if (!updatedProduct) {
       formData = new FormData();
-
+    
       formData.append('productTitle', values.productTitle);
       formData.append('productCondition', values.productCondition);
       formData.append('productPrice', values.productPrice);
       formData.append('productDiscount', values.productDiscount);
       formData.append('featuredItem', values.featuredItem ? true : false);
-
-      values.productSizes.map((size, index) => {
+    
+      // Append productSizes in the desired format
+      values.productSizes.forEach((size, index) => {
         formData.append(`productSizes[${index}]`, size.size);
       });
-
+    
       formData.append('file', fileList[0].originFileObj);
     } else {
       formData = values;
+
+      if (formData.productSizes && formData.productSizes.length > 0) {
+        formData.productSizes = formData.productSizes.map((size) => size.size);
+      }
     }
 
     const headers = {
